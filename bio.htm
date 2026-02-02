@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joydeep | Not a Bio</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  background:#0f0f0f;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  cursor:pointer;
+  overflow: hidden;
+}
+
+.screen{
+  max-width:420px;
+  padding:20px;
+  position: relative;
+  z-index: 1;
+}
+
+img.intro-meme{
+  width:200px;
+  border-radius:16px;
+  animation: introPop 0.9s ease forwards;
+}
+
+img.meme{
+  width:190px;
+  margin-top:18px;
+  border-radius:14px;
+  opacity:0;
+  transform: translateY(12px) scale(0.97);
+  animation: memeIn 0.35s ease forwards;
+}
+
+@keyframes introPop{
+  0%{
+    transform: scale(1.6);
+    opacity:0;
+    filter: blur(6px);
+  }
+  60%{opacity:1;}
+  100%{
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes memeIn{
+  to{
+    opacity:1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+p{
+  margin-top:14px;
+  color:#cfcfcf;
+  line-height:1.5;
+}
+
+.next{
+  margin-top:25px;
+  font-weight:bold;
+  opacity:0.8;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 105, 180, 0.6);
+  pointer-events: none;
+  animation: floatUp linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body onclick="nextPage()">
+
+<audio id="bgm" src="backgroundmusic.mp3" loop></audio>
+
+<div class="screen" id="screen">
+  <h1>Wait—don’t scroll 😶‍🌫️</h1>
+  <p>This is not a bio.<br>Just a curious human.</p>
+  <img src="memepic1.png" class="intro-meme">
+  <div class="next">click next..</div>
+</div>
+
+<script>
+let step = 0;
+let musicStarted = false;
+
+function nextPage(){
+  const s = document.getElementById("screen");
+  const bgm = document.getElementById("bgm");
+
+  if(!musicStarted){
+    bgm.volume = 0.3;
+    bgm.play().catch(()=>{});
+    musicStarted = true;
+  }
+
+  if(step === 0){
+    s.innerHTML = `
+      <h1>Okay okay 😅</h1>
+      <p>You clicked.<br>Respect 🤝</p>
+      <img src="memepic10.jpeg" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  else if(step === 1){
+    s.innerHTML = `
+      <h1>What I Make 🛠️</h1>
+      <p>
+        Arduino projects that blink & move<br>
+        Python projects that mostly work
+      </p>
+      <img src="memepic2.png" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  else if(step === 2){
+    s.innerHTML = `
+      <h1>Core Interest ⚡</h1>
+      <p>
+        Arduino • Python<br>
+        Experiments • Automation
+      </p>
+      <img src="memepic3.png" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  else if(step === 3){
+    s.innerHTML = `
+      <h1>Also Learning 🌱</h1>
+      <p>
+        HTML • CSS<br>
+        Making simple things look clean
+      </p>
+      <img src="memepic3.png" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  else if(step === 4){
+    s.innerHTML = `
+      <h1>Right Now 📚</h1>
+      <p>
+        Taking a short break for studies<br>
+        Projects paused 😶
+      </p>
+      <img src="memepic6.png" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  else if(step === 5){
+    s.innerHTML = `
+      <h1>Still Here? 👀</h1>
+      <p>
+        That means you’re curious.<br>
+        Same here.
+      </p>
+      <img src="memepic5.png" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  else if(step === 6){
+    s.innerHTML = `
+      <h1>Upcoming</h1>
+      <p>
+        Creating new project..<br>
+        With new account..<br>
+        Just wait and watch 😎
+      </p>
+      <img src="memepic9.jpeg" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  else if(step === 7){
+    s.innerHTML = `
+      <h1>Final Deal 🤝</h1>
+      <p>
+        Follow my Insta 😎<br>
+        I know you didn’t follow…<br>
+        So follow now, I’m watching 👀
+      </p>
+      <img src="memepic8.png" class="meme">
+      <div class="next">next...</div>
+    `;
+  }
+  // --- NEW LEARNING TOGETHER STEP ---
+  else if(step === 8){
+    s.innerHTML = `
+      <h1>Let’s Learn</h1>
+      <p>
+        Ask me anything 🤔<br>
+        Don’t judge me<br>
+        I’m also learning, we’re vibing together<br>
+        So let’s start exploring & learning 🚀
+      </p>
+      <img src="memepic3.png" class="meme">
+      <div class="next">let’s gooo…</div>
+    `;
+  }
+
+  step++;
+}
+
+// --- BUBBLES JS ---
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+  
+  const size = Math.random() * 25 + 15;
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  bubble.style.left = `${Math.random() * 100}vw`;
+  bubble.style.animationDuration = `${Math.random() * 6 + 4}s`;
+
+  document.body.appendChild(bubble);
+
+  setTimeout(() => {
+    bubble.remove();
+  }, (parseFloat(bubble.style.animationDuration) * 1000));
+}
+
+// Start bubbles immediately
+setInterval(createBubble, 150);
+</script>
+
+</body>
+</html>
